@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src='http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
+<script>
+    // GET请求
+    // $.ajax({
+    //     // type:'GET'　默认是GET请求
+    //     url:' https://cnodejs.org/api/v1/topics',
+    //     //成功后的行为
+    //     success:function(data){
+    //         console.log(data)
+    //     }
+    // })
+    // $.ajax({
+    //     // dataType:'json',　　//期望后台返回的数据类型(可以不写)
+    //      url:' https://cnodejs.org/api/v1/topics',
+    // }).done(function(data){
+    //     console.log(data)
+    // }).fail(function(err){
+    //     console.log(err)
+    // }).always(function(){
+    //     console.log('ajax')
+    // })
+    // POST请求
+    // $.ajax({
+    //     type:'POST',
+    //     dataType:'json',
+    //     contentType:'application/json', //发往后台的数据类型
+    //     url:' https://cnodejs.org/api/v1/accesstoken',
+    //     data:JSON.stringify({accesstoken:'3f77acb1-d753-4393-b784-44913190e6a8'})
+    //     }).done(function(data){
+    //         console.log(data)
+    //     }).fail(function(err){
+    //         console.log(err)
+    //     }).always(function(){
+    //         console.log('ajax')
+    //     })
+    // jsonp解决跨域请求问题(不同源：协议＋域名＋端口 有一个不同时)
+    $.ajax({
+        url:'https://api.douban.com/v2/book/1220562',
+        dataType:'jsonp',
+        jsonp:'callback'
+        }).done(function(data){
+            console.log(data)
+        }).fail(function(err){
+            console.log(err)
+        }).always(function(){
+            console.log('ajax')
+        })
+    //　No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+    // 在jquery.min.js中有一项：Access-Control-Allow-Origin:*
+    // fetch('https://api.github.com/')
+    // function myfetch(){
+    //     return new Promise(function(resolve,reject){
+    //         console.log('Run!');
+    //         setTimeout(function(){
+    //             resolve(12345)
+    //         },3000)
+    //     })
+    // }
+    // myfetch().then(function(num){
+    //     console.log('thing.then()',num)
+    // }).catch(function(){
+    //     console.log('thing.catch')
+    // })
+
+
+</script>
+</body>
+</html>

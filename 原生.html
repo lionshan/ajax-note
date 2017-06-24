@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script charset="utf-8">
+        var xml=new XMLHttpRequest();
+
+        xml.onreadystatechange=function(){
+            if(xml.readyState==4 && xml.status==200){
+                console.log(xml.readyState)
+                let data=JSON.parse(xml.responseText)
+                document.getElementsByTagName('div')[0].innerHTML=
+                'name:'+data.login+       'id:'+data.id
+            }
+        }
+
+        // xml.open('GET', "https://api.github.com/users/Jaya-lee",true)
+        // xml.send();
+        // console.log('aaa')
+        //先执行send，输出aaa，当条件满足响应时，输出后台拿到的数据
+        // 使用POST请求：
+        xml.open("POST"," https://cnodejs.org/api/v1/accesstoken",true);
+        xml.setRequestHeader("Content-type","application/json");
+        let data={
+            accesstoken:'3f77acb1-d753-4393-b784-44913190e6a8'
+        }
+        xml.send(JSON.stringify(data));
+
+    </script>
+</body>
+</html>
